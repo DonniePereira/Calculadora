@@ -7,7 +7,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            bool continuar = true;
+            // Declarando uma variável que determinará o inicio, ou o fim do programa
+            bool continuar = true;       
 
             Console.WriteLine("------------------");
             Console.WriteLine("Calculadora");
@@ -17,19 +18,21 @@ namespace ConsoleApp1
             {
                 while (continuar)
                 {
+                    // Pedindo ao usuário informar 2 números e para que ele selecione a operação que irá realizar
                     Console.WriteLine("Digite o primeiro número:");
                     int num1 = Convert.ToInt32(Console.ReadLine());
 
                     Console.WriteLine("Digite o segundo número:");
                     int num2 = Convert.ToInt32(Console.ReadLine());
 
-                    Console.WriteLine("Selecione uma opção:");
+                    Console.WriteLine("Selecione a operação que deseja realizar:");
 
                     Console.WriteLine("+");
                     Console.WriteLine("-");
                     Console.WriteLine("*");
                     Console.WriteLine("/");
 
+                    // declarando uma variável para armazernar o resultado da operação escolhida dentro do switch
                     int resultado = 0;
 
                     switch (Console.ReadLine())
@@ -52,10 +55,12 @@ namespace ConsoleApp1
                             break;
                     }
 
+                    // Perguntando ao usuário se ele deseja realizar outra operação, ou se deseja sair
                     Console.WriteLine("------------------------------------");
                     Console.WriteLine("Gostaria de realizar outra operação?");
                     Console.WriteLine("S = Sim, N = Não");
 
+                    // Se ele escolher (sim) o programa será executado de novo, se escolher (não) o looping irá terminar
                     if (Console.ReadLine().ToUpper() == "S")
                     {
                         continuar = true;
@@ -66,10 +71,12 @@ namespace ConsoleApp1
                     }
                 }
             }
+            // Capturando uma possível tentativa de divisão por zero
             catch (DivideByZeroException)
             {
                 Console.WriteLine("Você não pode dividir um número por zero!");
             }
+            // Capturando uma excessão genérica
             catch (Exception)
             {
                 Console.WriteLine("Verifique os valores informados e tente de novo.");
