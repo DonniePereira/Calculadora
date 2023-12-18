@@ -20,10 +20,10 @@ namespace ConsoleApp1
                 {
                     // Pedindo ao usuário informar 2 números e para que ele selecione a operação que irá realizar
                     Console.WriteLine("Digite o primeiro número:");
-                    int num1 = Convert.ToInt32(Console.ReadLine());
+                    double num1 = double.Parse(Console.ReadLine());
 
                     Console.WriteLine("Digite o segundo número:");
-                    int num2 = Convert.ToInt32(Console.ReadLine());
+                    double num2 = double.Parse(Console.ReadLine());
 
                     Console.WriteLine("Selecione a operação que deseja realizar:");
 
@@ -33,7 +33,7 @@ namespace ConsoleApp1
                     Console.WriteLine("/");
 
                     // declarando uma variável para armazernar o resultado da operação escolhida dentro do switch
-                    int resultado = 0;
+                    double resultado = 0;
 
                     switch (Console.ReadLine())
                     {
@@ -50,9 +50,13 @@ namespace ConsoleApp1
                             Console.WriteLine($"Seu resultado: {num1} * {num2} = {resultado}");
                             break;
                         case "/":
+                            if(num2 == 0)
+                            {
+                                throw new DivideByZeroException();
+                            }
                             resultado = num1 / num2;
                             Console.WriteLine($"Seu resultado: {num1} / {num2} = {resultado}");
-                            break;
+                            break;                        
                     }
 
                     // Perguntando ao usuário se ele deseja realizar outra operação, ou se deseja sair
